@@ -32,3 +32,8 @@ body {
     rgb(36, 31, 98) 90.4%
   );
 }
+@layer components {
+  .formElement {
+    @apply outline-none p-2 rounded-md bg-transparent border-b border-gray-500 text-white;
+  }
+}

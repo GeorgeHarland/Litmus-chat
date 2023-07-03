@@ -8,22 +8,26 @@ import DefaultUser from "../images/DefaultUser.png";
 type SidebarProps = {
   displayFriends: boolean;
   setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-const Sidebar = ({displayFriends, setDisplayFriends}: SidebarProps) => {
+const Sidebar = ({ displayFriends, setDisplayFriends }: SidebarProps) => {
   const iconSize: number = 28; // just to be able to change all at the same time
 
   const friendsOnClick = () => {
-    setDisplayFriends(previousState => !previousState)
-  }
+    setDisplayFriends((previousState) => !previousState);
+  };
 
   return (
     <div className="border-r border-white">
-      <nav className="flex flex-col h-screen justify-around w-12 items-center">
+      <nav className="flex h-screen w-12 flex-col items-center justify-around">
         <Link href="/">
           <AiOutlineHome size={iconSize} />
         </Link>
-        <FaUserFriends size={iconSize} onClick={friendsOnClick}/>
+        <FaUserFriends
+          className="cursor-pointer"
+          size={iconSize}
+          onClick={friendsOnClick}
+        />
         <AiFillMessage size={iconSize} />
         <BiLogOut size={iconSize} />
         <Image
