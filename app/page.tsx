@@ -1,7 +1,11 @@
+import FriendsList from "@/components/FriendsList";
+
 const Home = () => {
-  <main>
-    abc
-  </main>
-}
+  return (
+    <div className="flex">
+      <FriendsList />
+    </div>
+  );
+};
 
 export default Home;

@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,14 +25,10 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: black;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    76.8deg,
+    rgb(121, 45, 129) 3.6%,
+    rgb(36, 31, 98) 90.4%
+  );
 }
