@@ -5,15 +5,25 @@ import { AiOutlineHome, AiFillMessage } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import DefaultUser from "../images/DefaultUser.png";
 
-const Sidebar = () => {
+type SidebarProps = {
+  displayFriends: boolean;
+  setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Sidebar = ({displayFriends, setDisplayFriends}: SidebarProps) => {
   const iconSize: number = 28; // just to be able to change all at the same time
+
+  const friendsOnClick = () => {
+    setDisplayFriends(previousState => !previousState)
+  }
+
   return (
     <div className="border-r border-white">
-      <nav className=" flex flex-col h-screen justify-around w-12 items-center">
+      <nav className="flex flex-col h-screen justify-around w-12 items-center">
         <Link href="/">
           <AiOutlineHome size={iconSize} />
         </Link>
-        <FaUserFriends size={iconSize} />
+        <FaUserFriends size={iconSize} onClick={friendsOnClick}/>
         <AiFillMessage size={iconSize} />
         <BiLogOut size={iconSize} />
         <Image
