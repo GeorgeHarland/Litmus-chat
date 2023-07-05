@@ -1,8 +1,9 @@
-import Form from "@/components/RegistrationForm";
-const LoginPortal = () => (
-  <div>
-    <Form />
+import LoginForm from "@/components/LoginForm";
+
+const Login = () => (
+  <div className="flex h-screen w-screen items-center justify-center">
+    <LoginForm />
   </div>
 );
 
-export default LoginPortal;
+export default Login;

@@ -3,9 +3,14 @@ export type FriendListType = {
   Status: string;
 };
 
-export type FormDataType = {
+export type RegisterFormData = {
   FirstName: string;
   Surname: string;
+  Email: string;
+  Password: string;
+};
+
+export type LoginFormData = {
   Email: string;
   Password: string;
 };
