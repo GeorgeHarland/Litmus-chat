@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex max-w-[100vw]">
+        <div className="flex">
           <WebsiteTemplate>{children}</WebsiteTemplate>
         </div>
       </body>

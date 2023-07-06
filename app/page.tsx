@@ -3,6 +3,7 @@
 import { LoginContext } from "@/context/LoginContext";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
+import Login from "./login/page";
 
 const Home = () => {
   const { isLoggedIn } = useContext(LoginContext);
@@ -10,10 +11,10 @@ const Home = () => {
 
   useEffect(() => {
     //isLoggedIn && router.push("chatrooms");
-    !isLoggedIn && router.push("login");
+    //!isLoggedIn && router.push("login");
   }, []);
 
-  return <></>;
+  return <>{!isLoggedIn && <Login />}</>;
 };
 
 export default Home;
