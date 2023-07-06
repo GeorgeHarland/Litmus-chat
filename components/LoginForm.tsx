@@ -76,13 +76,13 @@ const RegistrationForm = () => {
             </button>
           </div>
         </form>
-        <h1 className="text-center">
+        <h2 className="text-center">
           Don&apos;t have an account?
-          <Link className="text-blue-600 hover:underline" href="/register">
+          <Link className="text-blue-500 hover:underline" href="/register">
             {" "}
             Register here
           </Link>
-        </h1>
+        </h2>
       </div>
     )
   );

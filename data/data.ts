@@ -1,4 +1,4 @@
-const Friends = {
+export const Friends = {
   Friends: [
     {
       id: 1,
@@ -123,4 +123,27 @@ const Friends = {
   ],
 };
 
-export default Friends;
+export const Messages = {
+  Messages: [
+    {
+      owner: "Minerva",
+      message: "Hello",
+      time: new Date(),
+    },
+    {
+      owner: "Jack",
+      message: "How are you",
+      time: new Date(),
+    },
+    {
+      owner: "Don",
+      message: "anyone want to hear a joke",
+      time: new Date(),
+    },
+    {
+      owner: "Hulda",
+      message: "No I'm good thanks",
+      time: new Date(),
+    },
+  ],
+};

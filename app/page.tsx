@@ -1,4 +1,5 @@
 "use client";
+
 import { LoginContext } from "@/context/LoginContext";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
@@ -12,7 +13,7 @@ const Home = () => {
     !isLoggedIn && router.push("login");
   }, []);
 
-  return <div className="">{}</div>;
+  return <></>;
 };
 
 export default Home;

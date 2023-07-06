@@ -1,6 +1,6 @@
 "use client";
 
-import Friends from "@/data/data";
+import { Friends } from "@/data/data";
 import Friend from "./Friend";
 import { useEffect, useState } from "react";
 
@@ -24,7 +24,7 @@ const FriendsList = () => {
   }, []);
 
   return (
-    <div className="max-h-screen min-w-fit overflow-y-scroll bg-purple-400">
+    <div className="max-h-screen min-w-fit overflow-y-auto bg-purple-400">
       <h2 className="pt-4 text-center">Friends ({friendCount})</h2>
       <div className="ml-4 max-h-full  ">
         <div>{sortFriends()}</div>

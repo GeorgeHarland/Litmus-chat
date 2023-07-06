@@ -4,26 +4,22 @@ import { BiLogOut } from "react-icons/bi";
 import { AiOutlineHome, AiFillMessage } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import DefaultUser from "../images/DefaultUser.png";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { LoginContext } from "@/context/LoginContext";
 
 type SidebarProps = {
-  displayFriends: boolean;
   setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;
+  setDisplayChat: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Sidebar = ({ displayFriends, setDisplayFriends }: SidebarProps) => {
+const Sidebar = ({ setDisplayFriends, setDisplayChat }: SidebarProps) => {
   const iconSize: number = 28; // just to be able to change all at the same time
 
   const { isLoggedIn } = useContext(LoginContext);
 
-  const friendsOnClick = () => {
-    setDisplayFriends((previousState) => !previousState);
-  };
-
   return (
     isLoggedIn && (
-      <div className="border-r border-white">
+      <div className="border-r">
         <nav className="flex h-screen w-12 flex-col items-center justify-around">
           <Link href="/">
             <AiOutlineHome size={iconSize} />
@@ -31,9 +27,13 @@ const Sidebar = ({ displayFriends, setDisplayFriends }: SidebarProps) => {
           <FaUserFriends
             className="cursor-pointer"
             size={iconSize}
-            onClick={friendsOnClick}
+            onClick={() => setDisplayFriends((prevState) => !prevState)}
           />
-          <AiFillMessage size={iconSize} />
+          <AiFillMessage
+            className="cursor-pointer"
+            size={iconSize}
+            onClick={() => setDisplayChat((prevState) => !prevState)}
+          />
           <BiLogOut size={iconSize} />
           <Image
             className="h-10 w-10 rounded-full"
