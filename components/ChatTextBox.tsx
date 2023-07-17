@@ -12,13 +12,12 @@ const ChatTextBox = () => {
   };
 
   const handleSubmit = () => {
-    console.log(
-      Messages.Messages.push({
+    if (message !== "")
+      Messages.push({
         owner: "Me",
         message: message,
         time: new Date(),
-      })
-    );
+      });
     setMessage("");
   };
 
@@ -26,10 +25,13 @@ const ChatTextBox = () => {
     <div className="flex items-center">
       <input
         className="w-full rounded-full border border-gray-600 bg-transparent px-2 py-2 text-gray-200 outline-none"
-        type="textarea"
+        type="input"
         placeholder="Write a message..."
         value={message}
         onChange={(e) => handleText(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleSubmit();
+        }}
       />
       <RiSendPlane2Fill
         className="ml-2 cursor-pointer"

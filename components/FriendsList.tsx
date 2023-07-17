@@ -8,7 +8,7 @@ const FriendsList = () => {
   const [friendCount, setFriendCount] = useState<number>(0);
 
   const sortFriends = () => {
-    return Friends.Friends.map((friend) => {
+    return Friends.map((friend) => {
       return (
         <Friend
           key={friend.id}
@@ -20,7 +20,7 @@ const FriendsList = () => {
   };
 
   useEffect(() => {
-    setFriendCount(Friends.Friends.length);
+    setFriendCount(Friends.length);
   }, []);
 
   return (

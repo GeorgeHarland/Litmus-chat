@@ -4,7 +4,7 @@ import ChatTextBox from "./ChatTextBox";
 
 const Chat = () => {
   const messageMap = () => {
-    return Messages.Messages.map((message, idx) => (
+    return Messages.map((message, idx) => (
       <div key={idx}>
         <h2 className="px-2">{message.owner}</h2>
         <ChatMessage message={message.message} />
