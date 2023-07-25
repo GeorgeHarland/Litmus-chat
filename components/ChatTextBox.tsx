@@ -1,10 +1,15 @@
 "use client";
 
+import { MessageType } from "@/types/types";
 import React, { useState } from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { Messages } from "@/data/data";
 
-const ChatTextBox = () => {
+type MessageProp = {
+  messages: MessageType[];
+  setMessages: React.Dispatch<React.SetStateAction<MessageType[]>>;
+};
+
+const ChatTextBox = ({ messages, setMessages }: MessageProp) => {
   const [message, setMessage] = useState<string>("");
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,11 +18,7 @@ const ChatTextBox = () => {
 
   const handleSubmit = () => {
     if (message !== "")
-      Messages.push({
-        owner: "Me",
-        message: message,
-        time: new Date(),
-      });
+      setMessages([...messages, { owner: "Me", message: message }]);
     setMessage("");
   };
 

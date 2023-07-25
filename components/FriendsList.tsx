@@ -24,8 +24,10 @@ const FriendsList = () => {
   }, []);
 
   return (
-    <div className="max-h-screen min-w-fit overflow-y-auto bg-purple-400">
-      <h2 className="pt-4 text-center">Friends ({friendCount})</h2>
+    <div className="bgGradient max-h-screen min-w-fit overflow-y-auto">
+      <h2 className="pt-4 text-center text-slate-200">
+        Friends ({friendCount})
+      </h2>
       <div className="ml-4 max-h-full  ">
         <div>{sortFriends()}</div>
       </div>
