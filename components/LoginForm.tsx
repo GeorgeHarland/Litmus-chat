@@ -49,7 +49,7 @@ const RegistrationForm = () => {
   };
   return (
     mounted && ( //If Component has mounted then render
-      <div className="bgGradient w-[500px] rounded-xl p-4 shadow-2xl">
+      <div className="w-[500px] rounded-xl bg-gradient-bg p-4 shadow-2xl">
         <h2 className="mb-10 text-center text-6xl font-bold">Livianos</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="flex flex-col gap-4">

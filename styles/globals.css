@@ -55,13 +55,13 @@ body {
   );
 }
 
-.bgGradient {
+/* .bgGradient {
   background: linear-gradient(
     76.8deg,
     rgb(122, 36, 132) 3.6%,
     rgb(27, 22, 96) 90.4%
   );
-}
+} */
 
 @layer components {
   .formElement {

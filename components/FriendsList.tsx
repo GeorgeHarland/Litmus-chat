@@ -24,7 +24,7 @@ const FriendsList = () => {
   }, []);
 
   return (
-    <div className="bgGradient max-h-screen min-w-fit overflow-y-auto">
+    <div className="max-h-screen min-w-fit overflow-y-auto bg-gradient-bg">
       <h2 className="pt-4 text-center text-slate-200">
         Friends ({friendCount})
       </h2>
