@@ -1,6 +1,6 @@
-import Image from "next/image";
-import DefaultUser from "../images/DefaultUser.png";
-import { FriendListType } from "@/types/types";
+import Image from 'next/image';
+import DefaultUser from '../images/DefaultUser.png';
+import { FriendListType } from '@/types/types';
 
 const Friend = ({ FriendName, Status }: FriendListType) => {
   return (

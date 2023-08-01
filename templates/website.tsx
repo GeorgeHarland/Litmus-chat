@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Chat from "@/components/Chat";
-import FriendsList from "@/components/FriendsList";
-import Sidebar from "@/components/Sidebar";
-import { LoginContextProvider } from "@/context/LoginContext";
-import { useState } from "react";
+import Chat from '@/components/Chat';
+import FriendsList from '@/components/FriendsList';
+import Sidebar from '@/components/Sidebar';
+import { LoginContextProvider } from '@/context/LoginContext';
+import { useState } from 'react';
 
 const WebsiteTemplate = ({ children }: { children: React.ReactNode }) => {
   const [displayFriends, setDisplayFriends] = useState<boolean>(false);

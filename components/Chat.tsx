@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import ChatMessage from "./ChatMessage";
-import { Messages } from "@/data/data";
-import ChatTextBox from "./ChatTextBox";
-import { useEffect, useRef, useState } from "react";
-import { MessageType } from "@/types/types";
+import ChatMessage from './ChatMessage';
+import { Messages } from '@/data/data';
+import ChatTextBox from './ChatTextBox';
+import { useEffect, useRef, useState } from 'react';
+import { MessageType } from '@/types/types';
 
 const Chat = () => {
   const [messages, setMessages] = useState<MessageType[]>(Messages);

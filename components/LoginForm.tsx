@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useContext, useEffect, useState } from "react";
-import { LoginFormData } from "@/types/types";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { LoginContext } from "@/context/LoginContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { LoginFormData } from '@/types/types';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { LoginContext } from '@/context/LoginContext';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
@@ -14,8 +14,8 @@ type FormEventTypes = {
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState<LoginFormData>({
-    Email: "",
-    Password: "",
+    Email: '',
+    Password: '',
   });
 
   const { setIsLoggedIn } = useContext(LoginContext);
@@ -23,8 +23,8 @@ const RegistrationForm = () => {
 
   const resetFormData = () => {
     setFormData({
-      Email: "",
-      Password: "",
+      Email: '',
+      Password: '',
     });
   };
 
@@ -38,7 +38,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     resetFormData();
     setIsLoggedIn(true);
-    router.push("/");
+    router.push('/');
   };
 
   const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +79,7 @@ const RegistrationForm = () => {
         <h2 className="text-center">
           Don&apos;t have an account?
           <Link className="text-blue-500 hover:underline" href="/register">
-            {" "}
+            {' '}
             Register here
           </Link>
         </h2>

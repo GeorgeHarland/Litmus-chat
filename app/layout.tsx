@@ -1,12 +1,12 @@
-import "./../styles/globals.css";
-import { Inter } from "next/font/google";
-import WebsiteTemplate from "@/templates/website";
+import './../styles/globals.css';
+import { Inter } from 'next/font/google';
+import WebsiteTemplate from '@/templates/website';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Livianos Chat",
-  description: "Livianos | Home",
+  title: 'Livianos Chat',
+  description: 'Livianos | Home',
 };
 
 export default function RootLayout({

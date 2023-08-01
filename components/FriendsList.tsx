@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Friends } from "@/data/data";
-import Friend from "./Friend";
-import { useEffect, useState } from "react";
+import { Friends } from '@/data/data';
+import Friend from './Friend';
+import { useEffect, useState } from 'react';
 
 const FriendsList = () => {
   const [friendCount, setFriendCount] = useState<number>(0);

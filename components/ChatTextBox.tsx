@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { MessageType } from "@/types/types";
-import React, { useState } from "react";
-import { RiSendPlane2Fill } from "react-icons/ri";
+import { MessageType } from '@/types/types';
+import React, { useState } from 'react';
+import { RiSendPlane2Fill } from 'react-icons/ri';
 
 type MessageProp = {
   messages: MessageType[];
@@ -10,16 +10,16 @@ type MessageProp = {
 };
 
 const ChatTextBox = ({ messages, setMessages }: MessageProp) => {
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
 
   const handleSubmit = () => {
-    if (message !== "")
-      setMessages([...messages, { owner: "Me", message: message }]);
-    setMessage("");
+    if (message !== '')
+      setMessages([...messages, { owner: 'Me', message: message }]);
+    setMessage('');
   };
 
   return (
@@ -31,7 +31,7 @@ const ChatTextBox = ({ messages, setMessages }: MessageProp) => {
         value={message}
         onChange={(e) => handleText(e)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") handleSubmit();
+          if (e.key === 'Enter') handleSubmit();
         }}
       />
       <RiSendPlane2Fill

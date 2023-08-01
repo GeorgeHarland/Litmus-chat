@@ -1,11 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
-import { BiLogOut } from "react-icons/bi";
-import { AiOutlineHome, AiFillMessage } from "react-icons/ai";
-import { FaUserFriends } from "react-icons/fa";
-import DefaultUser from "../images/DefaultUser.png";
-import React, { useContext } from "react";
-import { LoginContext } from "@/context/LoginContext";
+import Link from 'next/link';
+import Image from 'next/image';
+import { BiLogOut } from 'react-icons/bi';
+import { AiOutlineHome, AiFillMessage } from 'react-icons/ai';
+import { FaUserFriends } from 'react-icons/fa';
+import DefaultUser from '../images/DefaultUser.png';
+import React, { useContext } from 'react';
+import { LoginContext } from '@/context/LoginContext';
 
 type SidebarProps = {
   setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;

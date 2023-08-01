@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { RegisterFormData } from "@/types/types";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import { RegisterFormData } from '@/types/types';
+import Link from 'next/link';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
@@ -12,18 +12,18 @@ type FormEventTypes = {
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState<RegisterFormData>({
-    FirstName: "",
-    Surname: "",
-    Email: "",
-    Password: "",
+    FirstName: '',
+    Surname: '',
+    Email: '',
+    Password: '',
   });
 
   const resetFormData = () => {
     setFormData({
-      FirstName: "",
-      Surname: "",
-      Email: "",
-      Password: "",
+      FirstName: '',
+      Surname: '',
+      Email: '',
+      Password: '',
     });
   };
 

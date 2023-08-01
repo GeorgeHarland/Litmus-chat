@@ -1,4 +1,4 @@
-import RegistrationForm from "@/components/RegistrationForm";
+import RegistrationForm from '@/components/RegistrationForm';
 
 const RegisterPortal = () => (
   <div className="flex h-screen w-screen items-center justify-center">
