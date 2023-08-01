@@ -1,20 +1,20 @@
-"use client"
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+"use client";
+
+import { LoginContext } from "@/context/LoginContext";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
+import Login from "./login/page";
 
 const Home = () => {
-  const loggedIn = true;
+  const { isLoggedIn } = useContext(LoginContext);
   const router = useRouter();
 
   useEffect(() => {
-    loggedIn && router.push('chatrooms');
+    //isLoggedIn && router.push("chatrooms");
+    //!isLoggedIn && router.push("login");
   }, []);
 
-  return (
-    <div className="flex md:text-gray-50">
-      Landing Page
-    </div>
-  );
+  return <>{!isLoggedIn && <Login />}</>;
 };
 
 export default Home;

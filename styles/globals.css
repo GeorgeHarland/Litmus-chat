@@ -8,6 +8,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border-color: gray;
 }
 
 :root {
@@ -24,6 +25,27 @@
   }
 }
 
+/* styles.css */
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #792d81;
+}
+
+/* Add a nice background color to the scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background-color: #110f30;
+}
+
+/* Change the color when hovering over the scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 body {
   color: black;
   background: linear-gradient(
@@ -31,4 +53,18 @@ body {
     rgb(121, 45, 129) 3.6%,
     rgb(36, 31, 98) 90.4%
   );
+}
+
+/* .bgGradient {
+  background: linear-gradient(
+    76.8deg,
+    rgb(122, 36, 132) 3.6%,
+    rgb(27, 22, 96) 90.4%
+  );
+} */
+
+@layer components {
+  .formElement {
+    @apply border-b border-gray-500 bg-transparent p-2 text-white outline-none;
+  }
 }

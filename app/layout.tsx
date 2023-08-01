@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex">
-          <WebsiteTemplate>
-            {children}
-          </WebsiteTemplate>
+          <WebsiteTemplate>{children}</WebsiteTemplate>
         </div>
       </body>
     </html>

@@ -4,35 +4,45 @@ import { BiLogOut } from "react-icons/bi";
 import { AiOutlineHome, AiFillMessage } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import DefaultUser from "../images/DefaultUser.png";
+import React, { useContext } from "react";
+import { LoginContext } from "@/context/LoginContext";
 
 type SidebarProps = {
-  displayFriends: boolean;
   setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;
-}
+  setDisplayChat: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const Sidebar = ({displayFriends, setDisplayFriends}: SidebarProps) => {
+const Sidebar = ({ setDisplayFriends, setDisplayChat }: SidebarProps) => {
   const iconSize: number = 28; // just to be able to change all at the same time
 
-  const friendsOnClick = () => {
-    setDisplayFriends(previousState => !previousState)
-  }
+  const { isLoggedIn } = useContext(LoginContext);
 
   return (
-    <div className="border-r border-white">
-      <nav className="flex flex-col h-screen justify-around w-12 items-center">
-        <Link href="/">
-          <AiOutlineHome size={iconSize} />
-        </Link>
-        <FaUserFriends size={iconSize} onClick={friendsOnClick}/>
-        <AiFillMessage size={iconSize} />
-        <BiLogOut size={iconSize} />
-        <Image
-          className="h-10 w-10 rounded-full"
-          src={DefaultUser} // Placeolder
-          alt="DefaultUserImage"
-        />
-      </nav>
-    </div>
+    isLoggedIn && (
+      <div className="border-r">
+        <nav className="flex h-screen w-12 flex-col items-center justify-around">
+          <Link href="/">
+            <AiOutlineHome size={iconSize} />
+          </Link>
+          <FaUserFriends
+            className="cursor-pointer"
+            size={iconSize}
+            onClick={() => setDisplayFriends((prevState) => !prevState)}
+          />
+          <AiFillMessage
+            className="cursor-pointer"
+            size={iconSize}
+            onClick={() => setDisplayChat((prevState) => !prevState)}
+          />
+          <BiLogOut size={iconSize} />
+          <Image
+            className="h-10 w-10 rounded-full"
+            src={DefaultUser} // Placeolder
+            alt="DefaultUserImage"
+          />
+        </nav>
+      </div>
+    )
   );
 };
 

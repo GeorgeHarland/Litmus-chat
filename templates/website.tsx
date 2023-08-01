@@ -1,18 +1,28 @@
 "use client";
-import { useState } from "react";
+
+import Chat from "@/components/Chat";
 import FriendsList from "@/components/FriendsList";
 import Sidebar from "@/components/Sidebar";
+import { LoginContextProvider } from "@/context/LoginContext";
+import { useState } from "react";
 
-const WebsiteTemplate = ({children}: {children: React.ReactNode}) => {
-  const [displayFriends, setDisplayFriends] = useState(false)
+const WebsiteTemplate = ({ children }: { children: React.ReactNode }) => {
+  const [displayFriends, setDisplayFriends] = useState<boolean>(false);
+  const [displayChat, setDisplayChat] = useState<boolean>(false);
 
   return (
     <>
-      <Sidebar displayFriends={displayFriends} setDisplayFriends={setDisplayFriends}/>
-      {displayFriends ? <FriendsList /> : null}
-      {children}
+      <LoginContextProvider>
+        <Sidebar
+          setDisplayFriends={setDisplayFriends}
+          setDisplayChat={setDisplayChat}
+        />
+        {displayFriends ? <FriendsList /> : null}
+        {displayChat ? <Chat /> : null}
+        {children}
+      </LoginContextProvider>
     </>
-  )
-}
+  );
+};
 
 export default WebsiteTemplate;
