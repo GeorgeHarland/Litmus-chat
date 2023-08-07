@@ -13,13 +13,26 @@ type FormEventTypes = {
 };
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState<RegisterFormData>({
+  const [formData, setFormData] = useState<user>({
     Username: '',
     Email: '',
     Password: '',
     Day: 0,
     Month: 0,
     Year: 0,
+  });
+
+  type user = z.infer<typeof userSchema>;
+  const PasswordRegex: RegExp =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>/?[\]\\\|`~]).*$/;
+
+  const userSchema = z.object({
+    Username: z.string().min(3),
+    Email: z.string().email(),
+    Password: z.string().min(3).regex(PasswordRegex),
+    Day: z.number(),
+    Month: z.number(),
+    Year: z.number(),
   });
 
   const dayRef = useRef<HTMLSelectElement>(null);
@@ -40,23 +53,6 @@ const RegistrationForm = () => {
     if (yearRef.current) yearRef.current.value = 'Year';
   };
 
-  const PasswordRegex: RegExp =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>/?[\]\\\|`~]).*$/;
-
-  const userSchema = z.object({
-    Username: z.string().min(3),
-    Email: z.string().email(),
-    Password: z.string().min(3).regex(PasswordRegex),
-  });
-
-  type user = z.infer<typeof userSchema>;
-
-  const User: user = {
-    Username: formData.Username,
-    Email: formData.Email,
-    Password: formData.Password,
-  };
-
   // Fixes Hydration issue
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -75,9 +71,13 @@ const RegistrationForm = () => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => {
+    const value =
+      e.target.type === 'select-one'
+        ? parseInt(e.target.value)
+        : e.target.value;
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     }));
   };
 
