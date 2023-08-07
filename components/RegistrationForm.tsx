@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RegisterFormData } from '@/types/types';
 import Link from 'next/link';
+import { Months } from '@/data/data';
+import { z } from 'zod';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
@@ -12,19 +14,47 @@ type FormEventTypes = {
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState<RegisterFormData>({
-    FirstName: '',
-    Surname: '',
+    Username: '',
     Email: '',
     Password: '',
+    Day: 0,
+    Month: 0,
+    Year: 0,
   });
+
+  const dayRef = useRef<HTMLSelectElement>(null);
+  const monthRef = useRef<HTMLSelectElement>(null);
+  const yearRef = useRef<HTMLSelectElement>(null);
 
   const resetFormData = () => {
     setFormData({
-      FirstName: '',
-      Surname: '',
+      Username: '',
       Email: '',
       Password: '',
+      Day: 0,
+      Month: 0,
+      Year: 0,
     });
+    if (dayRef.current) dayRef.current.value = 'Day';
+    if (monthRef.current) monthRef.current.value = 'Month';
+    if (yearRef.current) yearRef.current.value = 'Year';
+  };
+
+  const PasswordRegex: RegExp =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>/?[\]\\\|`~]).*$/;
+
+  const userSchema = z.object({
+    Username: z.string().min(3),
+    Email: z.string().email(),
+    Password: z.string().min(3).regex(PasswordRegex),
+  });
+
+  type user = z.infer<typeof userSchema>;
+
+  const User: user = {
+    Username: formData.Username,
+    Email: formData.Email,
+    Password: formData.Password,
   };
 
   // Fixes Hydration issue
@@ -36,41 +66,37 @@ const RegistrationForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
+    console.log(userSchema.safeParse(formData));
     resetFormData();
   };
 
-  const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleData = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
   };
+
+  const Days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const currentYear = new Date().getFullYear();
+  const earliestYear = currentYear - 100;
+  const Years = Array.from(
+    { length: currentYear - earliestYear + 1 },
+    (_, i) => earliestYear + i
+  );
+
   return (
     mounted && ( //If Component has mounted then render
       <div className="w-[500px] rounded-xl bg-gradient-bg p-4 shadow-2xl">
         <h2 className="mb-10 text-center text-6xl font-bold">Livianos</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-4">
             <input
               className="formElement"
-              type="text"
-              placeholder="First name"
-              required={true}
-              value={formData.FirstName}
-              name="FirstName"
-              onChange={(e) => handleData(e)}
-            />
-            <input
-              className="formElement"
-              type="text"
-              placeholder="Surname"
-              required={true}
-              value={formData.Surname}
-              name="Surname"
-              onChange={(e) => handleData(e)}
-            />
-            <input
-              className="formElement col-span-2"
               type="text"
               placeholder="Email"
               required={true}
@@ -79,7 +105,16 @@ const RegistrationForm = () => {
               onChange={(e) => handleData(e)}
             />
             <input
-              className="formElement col-span-2"
+              className="formElement"
+              type="text"
+              placeholder="Username"
+              required={true}
+              value={formData.Username}
+              name="Username"
+              onChange={(e) => handleData(e)}
+            />
+            <input
+              className="formElement "
               type="password"
               placeholder="Password"
               required={true}
@@ -87,7 +122,55 @@ const RegistrationForm = () => {
               name="Password"
               onChange={(e) => handleData(e)}
             />
-            <button className="col-span-3 mt-4 w-4/5 justify-self-center rounded-md bg-green-500 p-2 hover:bg-green-700">
+            <div className="flex justify-between gap-4 p-2">
+              <select
+                ref={dayRef}
+                name="Day"
+                onChange={(e) => handleData(e)}
+                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+              >
+                <option disabled hidden selected>
+                  Day
+                </option>
+                {Days.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
+              </select>
+              <select
+                ref={monthRef}
+                name="Month"
+                onChange={(e) => handleData(e)}
+                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+              >
+                <option disabled hidden selected>
+                  Month
+                </option>
+                {Object.entries(Months).map(([key, value]) => (
+                  <option key={key} value={key}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+              <select
+                ref={yearRef}
+                name="Year"
+                onChange={(e) => handleData(e)}
+                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+              >
+                <option disabled hidden selected>
+                  Year
+                </option>
+                {Years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button className="justify-self-center rounded-md bg-green-500 p-2 hover:bg-green-700">
               Sign Up
             </button>
           </div>

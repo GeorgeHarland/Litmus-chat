@@ -5,6 +5,7 @@ import { LoginFormData } from '@/types/types';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { LoginContext } from '@/context/LoginContext';
+import { z } from 'zod';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
