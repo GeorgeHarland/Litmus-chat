@@ -10,9 +10,14 @@ import { LoginContext } from '@/context/LoginContext';
 type SidebarProps = {
   setDisplayFriends: React.Dispatch<React.SetStateAction<boolean>>;
   setDisplayChat: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Sidebar = ({ setDisplayFriends, setDisplayChat }: SidebarProps) => {
+const Sidebar = ({
+  setDisplayFriends,
+  setDisplayChat,
+  setShowInfo,
+}: SidebarProps) => {
   const iconSize: number = 28; // just to be able to change all at the same time
 
   const { isLoggedIn } = useContext(LoginContext);
@@ -36,9 +41,10 @@ const Sidebar = ({ setDisplayFriends, setDisplayChat }: SidebarProps) => {
           />
           <BiLogOut size={iconSize} />
           <Image
-            className="h-10 w-10 rounded-full"
+            className="h-10 w-10 cursor-pointer rounded-full"
             src={DefaultUser} // Placeolder
             alt="DefaultUserImage"
+            onClick={() => setShowInfo((prevState) => !prevState)}
           />
         </nav>
       </div>

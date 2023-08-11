@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { RegisterFormData } from '@/types/types';
 import Link from 'next/link';
 import { Months } from '@/data/data';
 import { z } from 'zod';
@@ -13,7 +12,7 @@ type FormEventTypes = {
 };
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState<user>({
+  const [formData, setFormData] = useState<User>({
     Username: '',
     Email: '',
     Password: '',
@@ -22,7 +21,8 @@ const RegistrationForm = () => {
     Year: 0,
   });
 
-  type user = z.infer<typeof userSchema>;
+  type User = z.infer<typeof userSchema>;
+
   const PasswordRegex: RegExp =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>/?[\]\\\|`~]).*$/;
 
@@ -127,7 +127,7 @@ const RegistrationForm = () => {
                 ref={dayRef}
                 name="Day"
                 onChange={(e) => handleData(e)}
-                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+                className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
               >
                 <option disabled hidden selected>
                   Day
@@ -142,7 +142,7 @@ const RegistrationForm = () => {
                 ref={monthRef}
                 name="Month"
                 onChange={(e) => handleData(e)}
-                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+                className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
               >
                 <option disabled hidden selected>
                   Month
@@ -157,7 +157,7 @@ const RegistrationForm = () => {
                 ref={yearRef}
                 name="Year"
                 onChange={(e) => handleData(e)}
-                className="w-full appearance-none rounded-sm bg-purple-700 px-4 py-1"
+                className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
               >
                 <option disabled hidden selected>
                   Year
