@@ -121,6 +121,25 @@ export const Friends = [
   },
 ];
 
+export const Accounts = [
+  {
+    Email: 'orizinvar@fu.mu',
+    Password: 'NcizfPANYBOHMg8zFZfI',
+  },
+  {
+    Email: 'in@nug.eh',
+    Password: '1d82ESI23',
+  },
+  {
+    Email: 'ijijolka@agiema.pe',
+    Password: 'oLi6FoYFP',
+  },
+  {
+    Email: 'viuheip@aporirnuj.gs',
+    Password: 'x2SM6pTh',
+  },
+];
+
 export const Messages = [
   {
     owner: 'Minerva',

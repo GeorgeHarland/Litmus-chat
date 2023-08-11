@@ -5,6 +5,7 @@ import FriendsList from '@/components/FriendsList';
 import PersonInfo from '@/components/PersonInfo';
 import Sidebar from '@/components/Sidebar';
 import { LoginContextProvider } from '@/context/LoginContext';
+import { WebSocketProvider } from '@/context/WebsocketContext';
 import { useState } from 'react';
 
 const WebsiteTemplate = ({ children }: { children: React.ReactNode }) => {
@@ -14,18 +15,20 @@ const WebsiteTemplate = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <LoginContextProvider>
-        <Sidebar
-          setDisplayFriends={setDisplayFriends}
-          setDisplayChat={setDisplayChat}
-          setShowInfo={setShowInfo}
-        />
-        {showInfo ? <PersonInfo /> : null}
-        {displayFriends ? <FriendsList /> : null}
-        {displayChat ? <Chat /> : null}
+      <WebSocketProvider>
+        <LoginContextProvider>
+          <Sidebar
+            setDisplayFriends={setDisplayFriends}
+            setDisplayChat={setDisplayChat}
+            setShowInfo={setShowInfo}
+          />
+          {showInfo ? <PersonInfo /> : null}
+          {displayFriends ? <FriendsList /> : null}
+          {displayChat ? <Chat /> : null}
 
-        {children}
-      </LoginContextProvider>
+          {children}
+        </LoginContextProvider>
+      </WebSocketProvider>
     </>
   );
 };

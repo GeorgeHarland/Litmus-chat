@@ -1,13 +1,14 @@
 // Usage: instantiate if one doesn't exist -> setupConnection
 
 export default class ChatroomWebsocket {
-  ws: WebSocket;
+  ws: WebSocket | null;
 
   constructor() {
-    this.ws = new WebSocket('ws://localhost:3123/websocket');
+    this.ws = null;
   }
 
   setupConnection = () => {
+    this.ws = new WebSocket('ws://localhost:3123/websocket');
     this.ws.onopen = () => {
       console.log('Websocket connected');
     };
@@ -21,7 +22,7 @@ export default class ChatroomWebsocket {
     };
 
     this.ws.onerror = (err) => {
-      console.log(err);
+      console.log(err, 'err');
     };
   };
 
