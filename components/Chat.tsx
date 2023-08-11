@@ -1,7 +1,7 @@
 'use client';
 
 import ChatMessage from './ChatMessage';
-import { Messages } from '@/data/data';
+import { Messages } from '@/constants';
 import ChatTextBox from './ChatTextBox';
 import { useEffect, useRef, useState } from 'react';
 import { MessageType } from '@/types/types';

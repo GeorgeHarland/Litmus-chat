@@ -4,10 +4,12 @@ export type FriendListType = {
 };
 
 export type RegisterFormData = {
-  FirstName: string;
-  Surname: string;
+  Username: string;
   Email: string;
   Password: string;
+  Day: number;
+  Month: number;
+  Year: number;
 };
 
 export type LoginFormData = {

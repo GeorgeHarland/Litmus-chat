@@ -1,7 +1,7 @@
 'use client';
 
 import { MessageType } from '@/types/types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RiSendPlane2Fill } from 'react-icons/ri';
 
 type MessageProp = {

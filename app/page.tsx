@@ -3,7 +3,7 @@
 import { LoginContext } from '@/context/LoginContext';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
-import Login from './login/page';
+import Login from './(auth)/login/page';
 
 const Home = () => {
   const { isLoggedIn } = useContext(LoginContext);
