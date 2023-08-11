@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Months } from '@/data/data';
+import { Months } from '@/constants';
 import { z } from 'zod';
 
 // For future prop types since current functions are placeholders to get it working
@@ -128,8 +128,9 @@ const RegistrationForm = () => {
                 name="Day"
                 onChange={(e) => handleData(e)}
                 className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
+                defaultValue={'Day'}
               >
-                <option disabled hidden selected>
+                <option disabled hidden key={'Day'}>
                   Day
                 </option>
                 {Days.map((day) => (
@@ -143,8 +144,9 @@ const RegistrationForm = () => {
                 name="Month"
                 onChange={(e) => handleData(e)}
                 className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
+                defaultValue={'Month'}
               >
-                <option disabled hidden selected>
+                <option disabled hidden key={'Month'}>
                   Month
                 </option>
                 {Object.entries(Months).map(([key, value]) => (
@@ -158,8 +160,9 @@ const RegistrationForm = () => {
                 name="Year"
                 onChange={(e) => handleData(e)}
                 className="w-full appearance-none rounded-lg bg-purple-700 px-4 py-1"
+                defaultValue={'Year'}
               >
-                <option disabled hidden selected>
+                <option disabled hidden key={'Year'}>
                   Year
                 </option>
                 {Years.map((year) => (

@@ -1,6 +1,6 @@
 'use client';
 
-import { Friends } from '@/data/data';
+import { Friends } from '@/constants';
 import Friend from './Friend';
 import { useEffect, useState } from 'react';
 
