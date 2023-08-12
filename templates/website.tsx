@@ -15,20 +15,18 @@ const WebsiteTemplate = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <WebSocketProvider>
-        <LoginContextProvider>
-          <Sidebar
-            setDisplayFriends={setDisplayFriends}
-            setDisplayChat={setDisplayChat}
-            setShowInfo={setShowInfo}
-          />
-          {showInfo ? <PersonInfo /> : null}
-          {displayFriends ? <FriendsList /> : null}
-          {displayChat ? <Chat /> : null}
+      <LoginContextProvider>
+        <Sidebar
+          setDisplayFriends={setDisplayFriends}
+          setDisplayChat={setDisplayChat}
+          setShowInfo={setShowInfo}
+        />
+        {showInfo ? <PersonInfo /> : null}
+        {displayFriends ? <FriendsList /> : null}
+        {displayChat ? <Chat /> : null}
 
-          {children}
-        </LoginContextProvider>
-      </WebSocketProvider>
+        {children}
+      </LoginContextProvider>
     </>
   );
 };

@@ -13,7 +13,8 @@ type FormEventTypes = {
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const RegistrationForm = () => {
+const LoginForm = () => {
+  // TODO: Login with either email or username
   const [formData, setFormData] = useState<LoginFormData>({
     Email: '',
     Password: '',
@@ -37,6 +38,7 @@ const RegistrationForm = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // TODO: Validate Login before actually just logging in
     e.preventDefault();
     resetFormData();
     setIsLoggedIn(true);
@@ -91,4 +93,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;
