@@ -21,7 +21,7 @@ const ChatTextBox = ({ messages, setMessages }: MessageProp) => {
   const handleSubmit = () => {
     if (message !== '') {
       ws?.sendMessage(message);
-      setMessages([...messages, { owner: 'Me', message: ws?.returnMessage() }]);
+      setMessages([...messages, { owner: 'Me', message: message }]); // ws?.returnMessage()
       setMessage('');
     }
   };
