@@ -4,7 +4,6 @@ import WebSocketContext from '@/context/WebsocketContext';
 import { MessageType } from '@/types/types';
 import { useContext, useEffect, useState } from 'react';
 import { RiSendPlane2Fill } from 'react-icons/ri';
-import axios from 'axios';
 
 type MessageProp = {
   messages: MessageType[];
@@ -18,10 +17,6 @@ const ChatTextBox = ({ messages, setMessages }: MessageProp) => {
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
-
-  useEffect(() => {
-    axios.get('http://localhost:3123/rest');
-  }, []);
 
   const handleSubmit = () => {
     if (message !== '') {
