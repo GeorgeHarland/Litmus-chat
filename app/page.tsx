@@ -10,11 +10,6 @@ const Home = () => {
   const { isLoggedIn } = useContext(LoginContext);
   const router = useRouter();
 
-  useEffect(() => {
-    console.log('??');
-    axios.get('https://localhost:3123/rest');
-  }, []);
-
   return <>{!isLoggedIn && <Login />}</>;
 };
 

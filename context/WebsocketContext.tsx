@@ -13,6 +13,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
   const [ws, setWs] = useState<ChatroomWebsocket | undefined>(undefined);
   useEffect(() => {
     setWs(new ChatroomWebsocket());
+    // return () => ws?.websocket?.close();
   }, []);
 
   return (
