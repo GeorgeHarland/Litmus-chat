@@ -10,5 +10,5 @@ export type LoginFormData = {
 
 export type MessageType = {
   owner: string;
-  message: string;
+  message: string | undefined;
 };

@@ -124,18 +124,22 @@ export const Friends = [
 export const Accounts = [
   {
     Email: 'johndoe@gmail.com',
+    Username: 'ArdentFatal',
     Password: 'NcizfPANYBOHMg8zFZfI',
   },
   {
     Email: 'janedoe@gmail.com',
+    Username: 'PlotCocktail',
     Password: '1d82ESI23',
   },
   {
     Email: 'JohnSmith@gmail.com',
+    Username: 'LemonyTattoo',
     Password: 'oLi6FoYFP',
   },
   {
     Email: 'Random42@Gmail.com',
+    Username: 'WilderDoom',
     Password: 'x2SM6pTh',
   },
 ];

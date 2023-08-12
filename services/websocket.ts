@@ -30,6 +30,16 @@ export default class ChatroomWebsocket {
     this.websocket?.close();
   };
 
+  returnMessage = () => {
+    console.log('george');
+    if (this.websocket) {
+      this.websocket.onmessage = (res) => {
+        return res.data.toString();
+      };
+    }
+    return '';
+  };
+
   sendMessage = (message: string) => {
     if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
       this.websocket.send(message);
