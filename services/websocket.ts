@@ -1,37 +1,38 @@
 // Usage: instantiate if one doesn't exist -> setupConnection
 
 export default class ChatroomWebsocket {
-  ws: WebSocket;
+  websocket: WebSocket | null;
 
   constructor() {
-    this.ws = new WebSocket('ws://localhost:3123/websocket');
+    this.websocket = null;
   }
 
   setupConnection = () => {
-    this.ws.onopen = () => {
+    this.websocket = new WebSocket('ws://localhost:3123/websocket');
+    this.websocket.onopen = () => {
       console.log('Websocket connected');
     };
 
-    this.ws.onclose = () => {
+    this.websocket.onclose = () => {
       console.log('Websocket closed');
     };
 
-    this.ws.onmessage = (res) => {
-      console.log(res);
+    this.websocket.onmessage = (res) => {
+      console.log('Message received from server:', res.data);
     };
 
-    this.ws.onerror = (err) => {
-      console.log(err);
+    this.websocket.onerror = (err) => {
+      console.log(err, 'err');
     };
   };
 
   closeConnection = () => {
-    this.ws?.close();
+    this.websocket?.close();
   };
 
   sendMessage = (message: string) => {
-    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-      this.ws.send(message);
+    if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
+      this.websocket.send(message);
     } else {
       console.log('Websocket not open or not ready');
     }

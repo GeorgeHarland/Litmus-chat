@@ -5,7 +5,7 @@ import { LoginFormData } from '@/types/types';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { LoginContext } from '@/context/LoginContext';
-import { z } from 'zod';
+import WebSocketContext from '@/context/WebsocketContext';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
@@ -20,6 +20,7 @@ const RegistrationForm = () => {
   });
 
   const { setIsLoggedIn } = useContext(LoginContext);
+  const { ws } = useContext(WebSocketContext);
   const router = useRouter();
 
   const resetFormData = () => {
@@ -39,6 +40,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     resetFormData();
     setIsLoggedIn(true);
+    ws?.setupConnection();
     router.push('/');
   };
 
@@ -71,6 +73,7 @@ const RegistrationForm = () => {
               value={formData.Password}
               name="Password"
               onChange={(e) => handleData(e)}
+              autoComplete="current-password"
             />
             <button className="mt-4 w-4/5 self-center rounded-md bg-green-500 p-2 hover:bg-green-700">
               Log in
@@ -80,7 +83,6 @@ const RegistrationForm = () => {
         <h2 className="text-center">
           Don&apos;t have an account?
           <Link className="text-blue-500 hover:underline" href="/register">
-            {' '}
             Register here
           </Link>
         </h2>

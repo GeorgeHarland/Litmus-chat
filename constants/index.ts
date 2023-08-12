@@ -121,6 +121,25 @@ export const Friends = [
   },
 ];
 
+export const Accounts = [
+  {
+    Email: 'johndoe@gmail.com',
+    Password: 'NcizfPANYBOHMg8zFZfI',
+  },
+  {
+    Email: 'janedoe@gmail.com',
+    Password: '1d82ESI23',
+  },
+  {
+    Email: 'JohnSmith@gmail.com',
+    Password: 'oLi6FoYFP',
+  },
+  {
+    Email: 'Random42@Gmail.com',
+    Password: 'x2SM6pTh',
+  },
+];
+
 export const Messages = [
   {
     owner: 'Minerva',

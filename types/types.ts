@@ -3,15 +3,6 @@ export type FriendListType = {
   Status: string;
 };
 
-export type RegisterFormData = {
-  Username: string;
-  Email: string;
-  Password: string;
-  Day: number;
-  Month: number;
-  Year: number;
-};
-
 export type LoginFormData = {
   Email: string;
   Password: string;

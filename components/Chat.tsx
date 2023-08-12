@@ -5,6 +5,7 @@ import { Messages } from '@/constants';
 import ChatTextBox from './ChatTextBox';
 import { useEffect, useRef, useState } from 'react';
 import { MessageType } from '@/types/types';
+import { getChatHistory } from '@/services/singleRequests';
 
 const Chat = () => {
   const [messages, setMessages] = useState<MessageType[]>(Messages);
@@ -15,6 +16,10 @@ const Chat = () => {
       ScrollRef.current.scrollTop = ScrollRef.current.scrollHeight;
     }
   };
+
+  useEffect(() => {
+    const tempHistory = getChatHistory();
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
