@@ -1,6 +1,7 @@
 import './../styles/globals.css';
 import { Inter } from 'next/font/google';
 import WebsiteTemplate from '@/templates/website';
+import { WebSocketProvider } from '@/context/WebsocketContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,11 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="flex">
-          <WebsiteTemplate>{children}</WebsiteTemplate>
-        </div>
-      </body>
+      <WebSocketProvider>
+        <body className={inter.className}>
+          <div className="flex">
+            <WebsiteTemplate>{children}</WebsiteTemplate>
+          </div>
+        </body>
+      </WebSocketProvider>
     </html>
   );
 }
