@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Months } from '@/constants';
 import { z } from 'zod';
+import { Accounts } from '@/constants';
 
 // For future prop types since current functions are placeholders to get it working
 type FormEventTypes = {
@@ -60,6 +61,7 @@ const RegistrationForm = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!checkRegistrationIsValid()) return;
     e.preventDefault();
     console.log(formData);
     console.log(userSchema.safeParse(formData));
@@ -88,6 +90,17 @@ const RegistrationForm = () => {
     { length: currentYear - earliestYear + 1 },
     (_, i) => earliestYear + i
   );
+
+  const checkRegistrationIsValid = () => {
+    Accounts.map((account) => {
+      if (
+        account.Email === formData.Email ||
+        account.Username === formData.Username
+      )
+        return false;
+    });
+    return true;
+  };
 
   return (
     mounted && ( //If Component has mounted then render

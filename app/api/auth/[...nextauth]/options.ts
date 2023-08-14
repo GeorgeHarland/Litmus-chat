@@ -1,13 +1,18 @@
+import { Accounts } from '@/constants';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from '';
-import { Accounts } from '@/constants';
 
 export const Options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
+      // Not sure if we need the things below as this just creates an auto generated page from nextauth (username/password fields)
       credentials: {
+        email: {
+          label: 'Email',
+          type: 'text',
+          placeholder: 'Email',
+        },
         username: {
           label: 'Username',
           type: 'text',
@@ -22,22 +27,24 @@ export const Options: NextAuthOptions = {
       async authorize(credentials) {
         // This is where you would retrieve data
         // Fake user below
-        const user = { id: '42', username: 'Dave', password: 'davey123' };
+        // const user = { id: '42', username: 'Dave', password: 'davey123' };
 
-        if (
-          credentials?.username === user.username &&
-          credentials?.password === user.password
-        ) {
-          return user;
-        } else {
-          return null;
-        }
+        Accounts.map((account) => {
+          Accounts.map((account) => {
+            if (
+              account.Email === credentials?.email ||
+              account.Username === credentials?.username
+            )
+              return false;
+          });
+          return true;
+        });
+        return null;
       },
     }),
+    // Add more providers here
   ],
 
-  pages: {
-    signIn: '/login',
-    newUser: '/register',
-  },
+  secret: process.env.NEXTAUTH_URL,
+  debug: process.env.NODE_ENV === 'development',
 };
