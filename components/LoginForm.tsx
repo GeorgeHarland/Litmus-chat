@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { LoginFormData } from '@/types/types';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { LoginContext } from '@/context/LoginContext';
 import WebSocketContext from '@/context/WebsocketContext';
@@ -37,13 +38,22 @@ const LoginForm = () => {
     setMounted(true);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // TODO: Validate Login before actually just logging in
     e.preventDefault();
-    resetFormData();
-    setIsLoggedIn(true);
-    ws?.setupConnection();
-    router.push('/');
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: formData.Email,
+      password: formData.Password
+    });
+    if (result?.error) {
+      // handle error
+    } else {
+      resetFormData();
+      setIsLoggedIn(true);
+      ws?.setupConnection();
+      router.push('/');
+    }
   };
 
   const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
